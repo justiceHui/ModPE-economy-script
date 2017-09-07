@@ -20,11 +20,11 @@ var moneyPath=path + "/money.txt";
 makeFile(moneyPath);
 if(readFile(moneyPath)==null) saveFile(moneyPath, '{\n"jhnah917": {"money": "0", "job": "null"},\n"matt9316": {"money": "0", "job": "null"}\n}', false);
 var moneytext="";
-moneytext=readFile(moneyPath);
+//moneytext=readFile(moneyPath);
 var moneyJson="";
 var mobf=[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22];
 var mobe=[20, 21, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44];
-if(moneytext!=null) moneyJson=JSON.parse(moneytext);
+//if(moneytext!=null) moneyJson=JSON.parse(moneytext);
 
 /*ModPE*/
 
@@ -32,6 +32,15 @@ function newLevel(){
   if(readFile(moneyPath)==null) makeFile(moneyPath);
   moneytext=readFile(moneyPath);
   if(moneytext!=null) moneyJson=JSON.parse(moneytext);
+}
+
+function procCmd(cmd){
+  if(cmd=="stat"){
+    clientMessage("text: " + moneytext.replace(/}/g, "\n") + "\njson: ");
+    for each(var i in moneyJson){
+      clientMessage(i.toString());
+    }
+  }
 }
 
 function useItem(x, y, z, i, b){
@@ -67,24 +76,28 @@ function deathHook(a, v){
     //p vs p
     if(Player.isPlayer(v)){
       moneyJson[Player.getName(a)]["money"]=(parseInt(moneyJson[Player.getName(a)]["money"])+1000).toString();
-      moneyJson[Player.getName(v)]["money"]-=(parseInt(moneyJson[Player.getName(v)]["money"])-300).toString();
+      moneyJson[Player.getName(v)]["money"]=(parseInt(moneyJson[Player.getName(v)]["money"])-300).toString();
       clientMessage(Player.getName(a) + "님 +1000 && " + Player.getName(v) + "님 -300");
+      clientMessage(moneyJson[Player.getName(a)]["money"] + "//" + moneyJson[Player.getName(v)]["money"]);
     }
 
     //p vs e
     else if(isEnemy(v)==1){
-      moneyJson[Player.getName(a)]["money"]+=(parseInt(moneyJson[Player.getName(a)]["money"])+500).toString();
+      moneyJson[Player.getName(a)]["money"]=(parseInt(moneyJson[Player.getName(a)]["money"])+500).toString();
       clientMessage(Player.getName(a) + "님 +500");
+      clientMessage(moneyJson[Player.getName(a)]["money"]);
     }
 
     else if(isEnemy(v)==2){
-      moneyJson[Player.getName(a)]["money"]+=(parseInt(moneyJson[Player.getName(a)]["money"])+300).toString();
+      moneyJson[Player.getName(a)]["money"]=(parseInt(moneyJson[Player.getName(a)]["money"])+300).toString();
       clientMessage(Player.getName(a) + "님 +300");
+      clientMessage(moneyJson[Player.getName(a)]["money"]);
     }
 
   }
 
   saveFile(moneyPath, JSON.stringify(moneyJson), false);
+  moneytext=JSON.stringify(moneyJson);
 }
 
 function isEnemy(ent){ //1 적 2 중립

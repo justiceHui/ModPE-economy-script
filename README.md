@@ -1,4 +1,9 @@
-# ModPE-economy-script
+# ModPE-economy-script 
+
+이 프로젝트/API는 CC BY-NC-ND(저작자 표시, 비영리적 사용, 변경금지)를 준수합니다.
+위반시 민사적 책임이 따를 수 있습니다.
+
+
 ----------
 money.js - 돈(완성)
 

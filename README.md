@@ -23,6 +23,6 @@ Matt.getMoneyName(name) 이름으로 플레이어 회원가입 엔티티 값으�
 
 
 
-Matt.giveMoneyEnt(ent) 엔티티 값으로 플레이어 돈 지급(지급 후 돈 리턴, 가입 안되어 있을시 null리턴)
+Matt.giveMoneyEnt(ent, money) 엔티티 값으로 플레이어 돈 지급(지급 후 돈 리턴, 가입 안되어 있을시 null리턴)
 
-Matt.giveMoneyName(name) 이름으로 플레이어 돈 지급(지급 후 돈 리턴, 가입 안되어 있을시 null리턴)
+Matt.giveMoneyName(name, money) 이름으로 플레이어 돈 지급(지급 후 돈 리턴, 가입 안되어 있을시 null리턴)

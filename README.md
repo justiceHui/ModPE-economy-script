@@ -6,7 +6,7 @@
 <hr/>
 
 ## economyAPI 사용법
-----------
+
 
 ### -1.1 update-
 
